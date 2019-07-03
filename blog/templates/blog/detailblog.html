@@ -1,15 +1,13 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-    {% load static %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Arif Khan</title>
+
+    <title>{{blog.title}}</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -31,61 +29,38 @@
 
             <ul class="navbar-nav ml-auto" >
                 <li class="nav-item ">
-                    <a class="nav-link" href="http://twitter.com/arifkhanesm">Twitter </a>
+                    <a class="nav-link" href="">Twitter </a>
                 </li>
-                <li class="nav-item ">
+                <li class="nav-item active">
                     <a class="nav-link" href="blog">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% static 'resume.pdf' %}">Resume</a>
                 </li>
             </ul>
         </div>
     </nav>
 </header>
-</body>
 
 <main role="main">
+    <div class="container">
+    <h1 class="text-center pt-3">Welcome to Arif's Khan Blog</h1>
+    <br/>
+    <br/>
+    <h2 >Latest Post</h2>
 
-    <section class="jumbotron text-center">
-        <div class="container">
-            <h1 class="jumbotron-heading">Hi I am Arif Khan</h1>
-            <p class="lead text-muted">hi I M ARIF KHAN</p>
-            <p>
-                <a href="mailto:arifkhancse11@gmail.com" class="btn btn-primary my-2">Email</a>
-            </p>
-            <img src="{% static 'arif.jpeg'%}" height="150" width="150"/>
-        </div>
-    </section>
+        <hr/>
 
-    <div class="album py-5 bg-light">
-        <div class="container">
+        <a href="{%url 'details' blog.id %}"><h3>{{ blog.title }}</h3></a>
+        {{blog.pub_date}}
+        <br/>
+        <img class="card-img-top" src="{{blog.image.url}}" height="100" width="10">
+        <br/>
+        <p>{{blog.body}}</p>
 
-            <div class="row">
-
-                {%for job in jobs.all%}
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
-                        <img class="card-img-top" src="{{job.image.url}}">
-                             <div class="card-body">
-                            <p class="card-text">{{ job.summary }}</p>
-
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
             </div>
-        </div>
-    </div>
 </main>
-
-
-
-
 
 <footer class="text-muted">
     <div class="container">
-       <p> © Copy right Arif Khan {% now "Y" %}</p>
+       <p> Copy right Arif Khan {% now "Y" %}</p>
     </div>
 </footer>
 
@@ -101,5 +76,5 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-
+</body>
 </html>
